@@ -43,6 +43,25 @@ This repository contains an advanced Ant Colony Simulation that demonstrates eme
    - Move towards nearby worker ants when they are in danger.
    - Maintain a distance from the nest while ensuring the safety of worker ants during food collection.
 
+## New Obstacle Types
+
+### 1. Heart Shape Obstacle
+- A heart-shaped obstacle that creates interesting patterns in the simulation.
+- This shape adds a unique visual element and tests the ants' navigation skills.
+
+### 2. Circular Obstacle
+- A circular obstacle that provides a smooth barrier for the ants.
+- This shape encourages ants to navigate around it rather than directly through it.
+
+### 3. Square Obstacle
+- A square-shaped obstacle that represents typical barriers.
+- It introduces a standard challenge for ant movement and pathfinding.
+
+### 4. Randomly Placed Obstacles
+- Obstacles that are placed at random locations within the simulation area.
+- This adds unpredictability to the environment, requiring ants to adapt their strategies.
+
+
 ### Advanced Behaviors
 1. **Food Collection System**:
    - Ants search for food sources
@@ -114,8 +133,48 @@ ANTI_CLUSTERING = {
   <img src="Image/add_food.gif" alt="Ant Colony Simulation Demo">
 </p>
 
-> Note: Green circles represent food sources, brown square is the nest, black rectangles are obstacles, 
-> and the colored trails show pheromone concentrations (green for food trails, red for return trails).
+### Obstacle Shapes
+
+The simulation includes four types of obstacles, each represented in the following GIFs:
+
+1. **Heart-shaped Obstacle**:
+   - A unique heart shape that presents a challenge for the ants.
+
+  <p align="center">
+  <img src="Image/heart.gif" alt="Ant Colony Simulation Demo">
+  </p>
+
+2. **Circular Obstacle**:
+   - A circular obstacle that requires strategic navigation.
+
+  <p align="center">
+  <img src="Image/circle.gif" alt="Ant Colony Simulation Demo">
+  </p>
+
+3. **Square Obstacle**:
+   - A square obstacle that blocks paths and affects ant movement.
+
+  <p align="center">
+  <img src="Image/square.gif" alt="Ant Colony Simulation Demo">
+  </p>
+
+4. **Randomly Positioned Obstacle**:
+   - Obstacles randomly placed throughout the environment.
+
+   <p align="center">
+   <img src="Image/random.gif" alt="Ant Colony Simulation Demo">
+   </p>
+
+### Soldier Ant
+
+The soldier ant is a specialized type of ant responsible for protecting worker ants during food collection. Below are the characteristics of the soldier ant:
+
+- **Protection of Worker Ants**: Soldier ants actively approach nearby worker ants to provide protection, ensuring their safety during food gathering.
+- **Behavior Demonstration**: Soldier ants patrol around the nest to offer support when needed.
+
+  <p align="center">
+  <img src="Image/random.gif" alt="Ant Colony Simulation Demo">
+  </p>
 
 ## Installation
 
