@@ -87,6 +87,7 @@ ANTI_CLUSTERING = {
 <p align="center">
   <img src="Image/demo.gif" alt="Ant Colony Simulation Demo">
 </p>
+
 ## Add Foods Demo Video
 <p align="center">
   <img src="Image/add_food.gif" alt="Ant Colony Simulation Demo">
