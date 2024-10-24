@@ -65,7 +65,19 @@ ANTI_CLUSTERING = {
         'max': 60
     }
 }
+<p align="center">
+  <img src="images/ant-simulation-demo_1.png" width="400" alt="Ant Simulation Demo">
+  <img src="images/ant-simulation-demo_2.png" width="400" alt="Ant Simulation Demo">
+  <img src="images/ant-simulation-demo_3.png" width="400" alt="Ant Simulation Demo">
+</p>
+<p align="center">
+  <img src="images/ant-simulation-demo_4.png" width="400" alt="Ant Simulation Demo">
+  <img src="images/ant-simulation-demo_5.png" width="400" alt="Ant Simulation Demo">
+  <img src="images/ant-simulation-demo_6.png" width="400" alt="Ant Simulation Demo">
+</p>
+
 ```
+#### Pheromone Schematic Diagram 
 
 ## Installation
 
