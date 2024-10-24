@@ -25,8 +25,8 @@ class Ant(pygame.sprite.Sprite):
         self.nest = nest
         self.pheromone_drop_interval = 20
         self.pheromone_timer = 0
-        self.perception_radius = 50
-        self.exploration_bias = random.uniform(0.6, 0.9)
+        self.perception_radius = 100
+        self.exploration_bias = random.uniform(0.8, 1.5)
         self.last_direction_change = 0
         self.direction_change_interval = random.randint(50, 150)
         self.has_found_food = False
@@ -36,8 +36,8 @@ class Ant(pygame.sprite.Sprite):
         
         # Anti-circling attributes
         self.movement_memory = []
-        self.memory_length = 30
-        self.stuck_threshold = 40
+        self.memory_length = 50 # Increase memory length to have more data points to evaluate if stuck
+        self.stuck_threshold = 60 # Increase the threshold for detecting if the ant is stuck
         self.last_stuck_check = 0
         self.stuck_check_interval = 20
         self.current_direction = pygame.math.Vector2(random.uniform(-1, 1), random.uniform(-1, 1)).normalize()
@@ -122,7 +122,10 @@ class Ant(pygame.sprite.Sprite):
             if distance < 10:  # Ignore very close pheromones
                 continue
                 
-            weight = (pheromone.strength / max(distance, 1)) * random.uniform(0.8, 1.2)
+            weight = (pheromone.strength / max(distance, 1)) * random.uniform(1, 1.5)
+            # Increase weighting for pheromones if the ant has found food
+            if self.carrying_food:
+                weight *= 15  # Ants carrying food should follow pheromones more strongly
             weighted_pos += pheromone.position * weight
             total_weight += weight
 
@@ -187,6 +190,11 @@ class Ant(pygame.sprite.Sprite):
             self.exploration_bias = min(self.exploration_bias * 1.5, 0.9)
             wander_force = self.current_direction * 2.0
             movement_force *= 0.2
+
+        if not self.carrying_food and not self.returning_to_food:
+            self.exploration_bias = random.uniform(1.0, 1.5)  # Strong exploration when idle
+        elif self.successful_trip:
+            self.exploration_bias = 0.3  # Reduce exploration after successful trip
 
         # Combine forces
         if self.carrying_food:
