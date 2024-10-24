@@ -235,3 +235,36 @@ class Ant(pygame.sprite.Sprite):
         self.position.x %= self.screen_width
         self.position.y %= self.screen_height
         self.rect.center = self.position
+        
+class SoldierAnt(Ant):
+    def __init__(self, x, y, screen_width, screen_height, nest):
+        super().__init__(x, y, screen_width, screen_height, nest)
+        self.image.fill((0, 0, 255))  # Blue for soldier ants
+        self.protection_radius = 100  # Radius within which the soldier ant provides protection
+        self.max_distance_from_nest = 100  # Maximum distance from the nest
+
+    def update(self, obstacles, foods, pheromones):
+        super().update(obstacles, foods, pheromones)  # Call the parent update method
+
+        # Check for nearby worker ants
+        nearby_workers = [ant for ant in self.groups()[0] if isinstance(ant, Ant) and
+                          (self.position - ant.position).length() < self.protection_radius]
+
+        # Move towards the nearest ant for protection, ensuring not to exceed max distance from nest
+        if nearby_workers:
+            closest_ant = min(nearby_workers, key=lambda w: (self.position - w.position).length())
+            distance_to_worker = (closest_ant.position - self.position).length()
+            distance_to_nest = (self.position - self.nest.position).length()
+
+            # Only move towards the worker if within the allowed distance from the nest
+            if distance_to_worker > 0 and distance_to_nest < self.max_distance_from_nest:
+                direction_to_worker = (closest_ant.position - self.position).normalize()
+                self.position += direction_to_worker * self.max_speed * 0.5  # Move towards the ant at a slower speed
+                self.rect.center = self.position
+            else:
+                # If too far from the nest, adjust position back towards the nest
+                if distance_to_nest >= self.max_distance_from_nest:
+                    direction_to_nest = (self.nest.position - self.position).normalize()
+                    self.position += direction_to_nest * self.max_speed * 0.5  # Move back towards the nest
+                    self.rect.center = self.position
+                

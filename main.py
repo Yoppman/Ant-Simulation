@@ -2,7 +2,7 @@
 import pygame
 import random
 import math
-from ant import Ant
+from ant import Ant, SoldierAnt
 from obstacle import Obstacle
 from food import Food, Nest, Pheromone, FoodSpot
 
@@ -73,7 +73,11 @@ def main():
             x = nest.rect.centerx + random.randint(-20, 20)
             y = nest.rect.centery + random.randint(-20, 20)
             if not any(obstacle.rect.collidepoint(x, y) for obstacle in obstacles):
-                ants.add(Ant(x, y, screen_width, screen_height, nest))
+                # Randomly assign as worker ant or soldier ant
+                if random.random() < 0.7:  # 70% chance to be a worker ant
+                    ants.add(Ant(x, y, screen_width, screen_height, nest))
+                else:  # 30% chance to be a soldier ant
+                    ants.add(SoldierAnt(x, y, screen_width, screen_height, nest))
                 break
 
     # Initialize pheromone list

@@ -17,6 +17,12 @@ This repository contains an advanced Ant Colony Simulation that demonstrates eme
 - Food counting system
 - Right-click food spot creation
 
+### Ting Chia Chen
+- Soldier ant implementation and behavior
+- Teamwork interaction between worker and soldier ants
+- Enhanced soldier ant protection logic
+- Game mechanics adjustments for ant behaviors
+
 ## Features
 
 ### Core Mechanics
@@ -25,6 +31,17 @@ This repository contains an advanced Ant Colony Simulation that demonstrates eme
 - Pheromone-based communication
 - Food gathering and transportation
 - Nest-centered colony behavior
+
+### Ant Types
+1. **Worker Ants**:
+   - Responsible for foraging food and gathering resources.
+   - Exhibit pheromone-following behaviors to lead others to food sources.
+   - Carry food back to the nest and deposit it for storage.
+
+2. **Soldier Ants**:
+   - Designed to protect the colony and worker ants.
+   - Move towards nearby worker ants when they are in danger.
+   - Maintain a distance from the nest while ensuring the safety of worker ants during food collection.
 
 ### Advanced Behaviors
 1. **Food Collection System**:
@@ -44,6 +61,10 @@ This repository contains an advanced Ant Colony Simulation that demonstrates eme
    - Stuck detection and resolution
    - Directional persistence
    - Random exploration factors
+
+4.	**Teamwork Behavior:
+	•	Soldier ants move to protect worker ants when they are nearby.
+	•	Worker ants benefit from soldier protection, ensuring safer food collection.
 
 ### Pheromone Coefficients and Behavior Parameters
 
