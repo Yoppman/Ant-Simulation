@@ -14,11 +14,13 @@ cd Ant-Simulation
 
 ## Installing Dependencies
 
-Make sure you have Python installed. To install the required libraries, including `pygame`, run the following command:
+Make sure you have Python installed. To install the required libraries, run the following command:
 
 ```bash
-pip install pygame
+pip install -r requirements.txt
 ```
+
+This will install `pygame` and any other dependencies required for the simulation.
 
 ## Running the Program
 
