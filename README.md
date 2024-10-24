@@ -65,20 +65,22 @@ ANTI_CLUSTERING = {
         'max': 60
     }
 }
-<p align="center">
-  <img src="images/ant-simulation-demo_1.png" width="400" alt="Ant Simulation Demo">
-  <img src="images/ant-simulation-demo_2.png" width="400" alt="Ant Simulation Demo">
-  <img src="images/ant-simulation-demo_3.png" width="400" alt="Ant Simulation Demo">
-</p>
-<p align="center">
-  <img src="images/ant-simulation-demo_4.png" width="400" alt="Ant Simulation Demo">
-  <img src="images/ant-simulation-demo_5.png" width="400" alt="Ant Simulation Demo">
-  <img src="images/ant-simulation-demo_6.png" width="400" alt="Ant Simulation Demo">
-</p>
+
 
 ```
-#### Pheromone Schematic Diagram 
-
+## Pheromone Schematic Diagram 
+<p align="center">
+  <img src="Image/ant-simulation-demo_1.png" width="400" alt="Ant Simulation Demo">
+  <img src="Image/ant-simulation-demo_2.png" width="400" alt="Ant Simulation Demo">
+  <img src="Image/ant-simulation-demo_3.png" width="400" alt="Ant Simulation Demo">
+</p>
+<p align="center">
+  <img src="Image/ant-simulation-demo_4.png" width="400" alt="Ant Simulation Demo">
+  <img src="Image/ant-simulation-demo_5.png" width="400" alt="Ant Simulation Demo">
+  <img src="Image/ant-simulation-demo_6.png" width="400" alt="Ant Simulation Demo">
+</p>
+> Note: Green circles represent food sources, brown square is the nest, black rectangles are obstacles, 
+> and the colored trails show pheromone concentrations (green for food trails, red for return trails).
 ## Installation
 
 ### Cloning the Repository
