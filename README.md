@@ -69,7 +69,6 @@ ANTI_CLUSTERING = {
 
 ```
 ## Pheromone Schematic Diagram 
-## Simulation Demo
 
 <p align="center">
   <img src="Image/ant-simulation-demo_1.png" width="400" alt="Ant Simulation Demo">
