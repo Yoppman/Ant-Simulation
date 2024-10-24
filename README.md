@@ -2,6 +2,21 @@
 
 This repository contains an advanced Ant Colony Simulation that demonstrates emergent behavior through pheromone-based pathfinding and collective food gathering.
 
+## Authors and Contributions
+
+### Chia Da Liu
+- Obstacle implementation and collision detection
+- Ant steering behavior and obstacle avoidance
+- Core ant movement mechanics
+- Simulation physics and navigation
+
+### Yu Chun Lin
+- Food system implementation
+- Pheromone tracking mechanism
+- Nest functionality and return behavior
+- Food counting system
+- Right-click food spot creation
+
 ## Features
 
 ### Core Mechanics
