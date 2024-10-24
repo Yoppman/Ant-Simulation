@@ -97,7 +97,6 @@ ANTI_CLUSTERING = {
 > and the colored trails show pheromone concentrations (green for food trails, red for return trails).
 
 ## Installation
-## Installation
 
 ### Cloning the Repository
 ```bash
