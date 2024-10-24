@@ -92,6 +92,7 @@ ANTI_CLUSTERING = {
 <p align="center">
   <img src="Image/add_food.gif" alt="Ant Colony Simulation Demo">
 </p>
+
 > Note: Green circles represent food sources, brown square is the nest, black rectangles are obstacles, 
 > and the colored trails show pheromone concentrations (green for food trails, red for return trails).
 
