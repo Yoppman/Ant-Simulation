@@ -3,8 +3,9 @@ import pygame
 import random
 import math
 from ant import Ant, SoldierAnt
-from obstacle import Obstacle
+from obstacle import Obstacle, generate_obstacles
 from food import Food, Nest, Pheromone, FoodSpot
+from utils import is_valid_nest_position, is_valid_food_spot, create_food_spots
 
 # Screen dimensions
 screen_width = 800
@@ -15,49 +16,20 @@ pygame.init()
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Ant Colony Simulation")
 
-def is_valid_food_spot(x, y, obstacles, food_spots, min_distance=200):
-    # Check if spot is too close to obstacles
-    for obstacle in obstacles:
-        if pygame.math.Vector2(x - obstacle.rect.centerx, 
-                             y - obstacle.rect.centery).length() < 100:
-            return False
-            
-    # Check if spot is too close to other food spots
-    for spot in food_spots:
-        if pygame.math.Vector2(x - spot.position.x, 
-                             y - spot.position.y).length() < min_distance:
-            return False
-    
-    return True
-
-def create_food_spots(num_spots, obstacles, screen_width, screen_height):
-    food_spots = []
-    min_distance = 200  # Minimum distance between food spots
-    
-    while len(food_spots) < num_spots:
-        x = random.randint(100, screen_width - 100)
-        y = random.randint(100, screen_height - 100)
-        
-        if is_valid_food_spot(x, y, obstacles, food_spots, min_distance):
-            spot = FoodSpot(x, y)
-            spot.add_food(30)  # Add initial food items
-            food_spots.append(spot)
-    
-    return food_spots
-
 def main():
-    # Create nest
-    nest = Nest(screen_width // 2, screen_height // 2)
+    # Create obstacle group
+    obstacles = pygame.sprite.Group()
+    generate_obstacles(obstacles, screen_width, screen_height)
+
+    # Create a valid nest position
+    while True:
+        nest_x = random.randint(50, screen_width - 50)
+        nest_y = random.randint(50, screen_height - 50)
+        if is_valid_nest_position(nest_x, nest_y, obstacles):
+            break
+    nest = Nest(nest_x, nest_y)
     nest_group = pygame.sprite.GroupSingle(nest)
 
-    # Create obstacles
-    obstacles = pygame.sprite.Group()
-    for i in range(10):  # Reduced number of obstacles
-        x = random.randint(0, screen_width - 50)
-        y = random.randint(0, screen_height - 50)
-        width = random.randint(20, 60)
-        height = random.randint(20, 60)
-        obstacles.add(Obstacle(x, y, width, height))
 
     # Create food spots and food sources
     food_spots = create_food_spots(2, obstacles, screen_width, screen_height)

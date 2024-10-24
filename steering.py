@@ -5,12 +5,19 @@ class Steering:
     def __init__(self, ant):
         self.ant = ant
         self.max_force = 0.1
-        self.perception_radius = 30
+        self.perception_radius = 50
 
     def calculate_steering(self, obstacles):
         wander_force = self.wander()
         avoid_force = self.avoid_obstacles(obstacles)
-        return wander_force + avoid_force * 2
+
+        # Dynamic weighting based on the proximity to obstacles
+        if avoid_force.length_squared() > 0:
+            # If there's an obstacle, prioritize avoidance more heavily
+            return wander_force * 0.5 + avoid_force * 2
+        else:
+            # Normal wandering behavior
+            return wander_force * 1.5 + avoid_force
 
     def avoid_obstacles(self, obstacles):
         steering = pygame.math.Vector2(0, 0)
@@ -28,7 +35,7 @@ class Steering:
             
             if distance_to_edge < self.ant.rect.width / 2 + 1:  # Adding 1 pixel buffer
                 if distance_to_edge > 0:
-                    avoidance = -to_closest.normalize() * self.max_force * 2
+                    avoidance = -to_closest.normalize() * self.max_force * 3
                 else:
                     avoidance = pygame.math.Vector2(random.uniform(-1, 1), random.uniform(-1, 1)).normalize() * self.max_force * 2
             elif distance < self.perception_radius + obstacle.rect.width / 2:
@@ -44,9 +51,9 @@ class Steering:
             return steering
     
     def wander(self):
-        # Wandering behavior logic from the original code
-        wander_radius = 3
-        wander_distance = 5
+        # Wandering behavior logic 
+        wander_radius = 30
+        wander_distance = 50
         wander_jitter = 0.5
 
         wander_point = pygame.math.Vector2(random.uniform(-1, 1), random.uniform(-1, 1)).normalize() * wander_radius
