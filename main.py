@@ -15,6 +15,21 @@ pygame.init()
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Ant Colony Simulation")
 
+def is_valid_food_spot(x, y, obstacles, food_spots, min_distance=200):
+    # Check if spot is too close to obstacles
+    for obstacle in obstacles:
+        if pygame.math.Vector2(x - obstacle.rect.centerx, 
+                             y - obstacle.rect.centery).length() < 100:
+            return False
+            
+    # Check if spot is too close to other food spots
+    for spot in food_spots:
+        if pygame.math.Vector2(x - spot.position.x, 
+                             y - spot.position.y).length() < min_distance:
+            return False
+    
+    return True
+
 def create_food_spots(num_spots, obstacles, screen_width, screen_height):
     food_spots = []
     min_distance = 200  # Minimum distance between food spots
@@ -23,21 +38,7 @@ def create_food_spots(num_spots, obstacles, screen_width, screen_height):
         x = random.randint(100, screen_width - 100)
         y = random.randint(100, screen_height - 100)
         
-        # Check if spot is too close to obstacles or other food spots
-        valid_spot = True
-        for obstacle in obstacles:
-            if pygame.math.Vector2(x - obstacle.rect.centerx, 
-                                 y - obstacle.rect.centery).length() < 100:
-                valid_spot = False
-                break
-                
-        for spot in food_spots:
-            if pygame.math.Vector2(x - spot.position.x, 
-                                 y - spot.position.y).length() < min_distance:
-                valid_spot = False
-                break
-                
-        if valid_spot:
+        if is_valid_food_spot(x, y, obstacles, food_spots, min_distance):
             spot = FoodSpot(x, y)
             spot.add_food(30)  # Add initial food items
             food_spots.append(spot)
@@ -59,7 +60,7 @@ def main():
         obstacles.add(Obstacle(x, y, width, height))
 
     # Create food spots and food sources
-    food_spots = create_food_spots(2, obstacles, screen_width, screen_height)  # Create 2 food spots
+    food_spots = create_food_spots(2, obstacles, screen_width, screen_height)
     foods = pygame.sprite.Group()
     for spot in food_spots:
         for food_item in spot.food_items:
@@ -67,7 +68,7 @@ def main():
 
     # Create ants
     ants = pygame.sprite.Group()
-    for i in range(30):  # Increased number of ants
+    for i in range(30):
         while True:
             x = nest.rect.centerx + random.randint(-20, 20)
             y = nest.rect.centery + random.randint(-20, 20)
@@ -89,6 +90,17 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 3:  # Right click
+                    mouse_x, mouse_y = pygame.mouse.get_pos()
+                    if is_valid_food_spot(mouse_x, mouse_y, obstacles, food_spots):
+                        # Create new food spot
+                        new_spot = FoodSpot(mouse_x, mouse_y)
+                        new_spot.add_food(30)  # Add initial food items
+                        food_spots.append(new_spot)
+                        # Add food items to the foods group
+                        for food_item in new_spot.food_items:
+                            foods.add(food_item)
 
         # Update ants
         for ant in ants:
