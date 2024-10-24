@@ -1,4 +1,4 @@
-# Ant Simulation
+# Ant Simulation woooooooooo hoooooooooooooo
 
 This repository contains an advanced Ant Colony Simulation that demonstrates emergent behavior through pheromone-based pathfinding and collective food gathering.
 
