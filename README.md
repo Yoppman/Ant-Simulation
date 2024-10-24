@@ -83,21 +83,14 @@ ANTI_CLUSTERING = {
 
 
 ```
-## Pheromone Schematic Diagram 
-
+## Pheromone Demo Video
 <p align="center">
-  <img src="Image/ant-simulation-demo_1.png" width="400" alt="Ant Simulation Demo">
-  <img src="Image/ant-simulation-demo_2.png" width="400" alt="Ant Simulation Demo">
+  <img src="Image/demo.gif" alt="Ant Colony Simulation Demo">
 </p>
+## Add Foods Demo Video
 <p align="center">
-  <img src="Image/ant-simulation-demo_3.png" width="400" alt="Ant Simulation Demo">
-  <img src="Image/ant-simulation-demo_4.png" width="400" alt="Ant Simulation Demo">
+  <img src="Image/add_food.gif" alt="Ant Colony Simulation Demo">
 </p>
-<p align="center">
-  <img src="Image/ant-simulation-demo_5.png" width="400" alt="Ant Simulation Demo">
-  <img src="Image/ant-simulation-demo_6.png" width="400" alt="Ant Simulation Demo">
-</p>
-
 > Note: Green circles represent food sources, brown square is the nest, black rectangles are obstacles, 
 > and the colored trails show pheromone concentrations (green for food trails, red for return trails).
 
