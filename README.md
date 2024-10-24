@@ -2,6 +2,21 @@
 
 This repository contains an advanced Ant Colony Simulation that demonstrates emergent behavior through pheromone-based pathfinding and collective food gathering.
 
+## Authors and Contributions
+
+### Chia Da Liu
+- Obstacle implementation and collision detection
+- Ant steering behavior and obstacle avoidance
+- Core ant movement mechanics
+- Simulation physics and navigation
+
+### Yu Chun Lin
+- Food system implementation
+- Pheromone tracking mechanism
+- Nest functionality and return behavior
+- Food counting system
+- Right-click food spot creation
+
 ## Features
 
 ### Core Mechanics
@@ -69,18 +84,24 @@ ANTI_CLUSTERING = {
 
 ```
 ## Pheromone Schematic Diagram 
+
 <p align="center">
   <img src="Image/ant-simulation-demo_1.png" width="400" alt="Ant Simulation Demo">
   <img src="Image/ant-simulation-demo_2.png" width="400" alt="Ant Simulation Demo">
-  <img src="Image/ant-simulation-demo_3.png" width="400" alt="Ant Simulation Demo">
 </p>
 <p align="center">
+  <img src="Image/ant-simulation-demo_3.png" width="400" alt="Ant Simulation Demo">
   <img src="Image/ant-simulation-demo_4.png" width="400" alt="Ant Simulation Demo">
+</p>
+<p align="center">
   <img src="Image/ant-simulation-demo_5.png" width="400" alt="Ant Simulation Demo">
   <img src="Image/ant-simulation-demo_6.png" width="400" alt="Ant Simulation Demo">
 </p>
+
 > Note: Green circles represent food sources, brown square is the nest, black rectangles are obstacles, 
 > and the colored trails show pheromone concentrations (green for food trails, red for return trails).
+
+## Installation
 ## Installation
 
 ### Cloning the Repository
